@@ -45,13 +45,13 @@ def print_rights(filename):
                 filename = filename + '/'
             elif 'md5sum' in args.format:
                 md5sum = get_md5_hash(filename)
-        except Exception, e:
+        except Exception as e:
             sys.stderr.write(str(e) + '\n')
-        print args.format % {
-                'bitmask': mode & 0777,
+        print(args.format % {
+                'bitmask': mode & 0o777,
                 'filename': filename,
                 'md5sum': md5sum,
-                }
+                })
 
 for filename in args.filename:
     if args.recursive and os.path.isdir(filename):
